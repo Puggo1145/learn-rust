@@ -1,14 +1,7 @@
-use std::fs::File;
-use std::io::ErrorKind;
+use std::error::Error;
+use std::fs::{read_to_string};
 
-fn main() {
-    let res = File::open("test.txt").unwrap_or_else(|error| {
-        if error.kind() == ErrorKind::NotFound {
-            File::create("test.txt").unwrap_or_else(|error| {
-                panic!("Even cannot create file because: {error}");
-            })
-        } else {
-            panic!("{error}");
-        }
-    });
+fn main() -> Result<(), Box<dyn Error>> {
+    read_to_string("hello.txt")?;
+    Ok(())
 }
