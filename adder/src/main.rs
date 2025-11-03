@@ -1,3 +1,6 @@
+use add_one::add;
+
 fn main() {
-    println!("Hello, world!");
+    let res = add(1, 2);
+    println!("{res}")
 }
